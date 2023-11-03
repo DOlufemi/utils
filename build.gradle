@@ -2,11 +2,11 @@ plugins {
     id 'maven-publish'
     id 'signing'
 }
-
+version '1.2.1'
 apply plugin: 'scala'
 apply plugin: 'java-library'
 
-group 'com.sbuslab'
+group 'com.github.dolufemi'
 
 repositories {
     maven { url 'https://oss.sonatype.org/content/repositories/public' }
@@ -18,65 +18,65 @@ java {
     withSourcesJar()
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifactId = 'utils'
-            from components.java
-
-            versionMapping {
-                usage('java-api') {
-                    fromResolutionOf('runtimeClasspath')
-                }
-                usage('java-runtime') {
-                    fromResolutionResult()
-                }
-            }
-
-            pom {
-                name = 'utils'
-                description = 'Common utils for sbus'
-                url = 'https://github.com/sbuslab/utils'
-                inceptionYear = '2018'
-
-                licenses {
-                    license {
-                        name = 'The Apache Software License, Version 2.0'
-                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                        distribution = 'repo'
-                    }
-                }
-
-                developers {
-                    developer {
-                        id = 'kulikovd'
-                        name = 'Dmitry Kulikov'
-                        email = 'kulikov.dm@gmail.com'
-                    }
-                }
-
-                scm {
-                    url = 'https://github.com/sbuslab/utils'
-                    connection = 'scm:https://github.com/sbuslab/utils.git'
-                    developerConnection = 'scm:git@github.com:sbuslab/utils.git'
-                }
-            }
-        }
-    }
-
-    if (project.findProperty('publishSonatype')) {
-        repositories {
-            maven {
-                url = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
-
-                credentials {
-                    username = project.findProperty('nexusUsername') ?: ''
-                    password = project.findProperty('nexusPassword') ?: ''
-                }
-            }
-        }
-    }
-}
+//publishing {
+//    publications {
+//        mavenJava(MavenPublication) {
+//            artifactId = 'utils'
+//            from components.java
+//
+//            versionMapping {
+//                usage('java-api') {
+//                    fromResolutionOf('runtimeClasspath')
+//                }
+//                usage('java-runtime') {
+//                    fromResolutionResult()
+//                }
+//            }
+//
+//            pom {
+//                name = 'utils'
+//                description = 'Common utils for sbus'
+//                url = 'https://github.com/sbuslab/utils'
+//                inceptionYear = '2018'
+//
+//                licenses {
+//                    license {
+//                        name = 'The Apache Software License, Version 2.0'
+//                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//                        distribution = 'repo'
+//                    }
+//                }
+//
+//                developers {
+//                    developer {
+//                        id = 'kulikovd'
+//                        name = 'Dmitry Kulikov'
+//                        email = 'kulikov.dm@gmail.com'
+//                    }
+//                }
+//
+//                scm {
+//                    url = 'https://github.com/sbuslab/utils'
+//                    connection = 'scm:https://github.com/sbuslab/utils.git'
+//                    developerConnection = 'scm:git@github.com:sbuslab/utils.git'
+//                }
+//            }
+//        }
+//    }
+//
+//    if (project.findProperty('publishSonatype')) {
+//        repositories {
+//            maven {
+//                url = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+//
+//                credentials {
+//                    username = project.findProperty('nexusUsername') ?: ''
+//                    password = project.findProperty('nexusPassword') ?: ''
+//                }
+//            }
+//        }
+//    }
+//}
 
 signing {
     sign publishing.publications.mavenJava
