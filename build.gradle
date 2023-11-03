@@ -83,7 +83,7 @@ java {
 //}
 
 dependencies {
-    api 'com.sbuslab:sbus:[1.5.0,1.6.0)'
+    api 'com.sbuslab:sbus:2.1+'
 
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
