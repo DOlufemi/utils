@@ -78,9 +78,9 @@ java {
 //    }
 //}
 
-signing {
-    sign publishing.publications.mavenJava
-}
+//signing {
+//    sign publishing.publications.mavenJava
+//}
 
 dependencies {
     api 'com.sbuslab:sbus:[1.5.0,1.6.0)'
